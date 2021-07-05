@@ -10,17 +10,21 @@ const catModel=require('./models/cats.model');
 
 app.use(cors());
 
-mongoose.connect('mongodb://localhost:27017/testingCats',
+mongoose.connect('mongodb://localhost:27017/favCats',
     { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
 app.get('/cats',catController);
-app.get('/',(req,res)=>{
-    catName=req.query.catname
-    catModel().find({name:catName});
-    res.send('test')
-});
 
-app.listen(port,()=>{
+app.get('/givemecats',(req,res)=>{
+    catName=req.query.catname
+    catModel.findOne({name:catName}, (error, cat)=>{
+        if (error){
+            res.send(error.message)
+        }
+        res.send(cat);
+    });
+});
+app.listen(port,()=>{   
     console.log('listening to port: 8000');
 })
