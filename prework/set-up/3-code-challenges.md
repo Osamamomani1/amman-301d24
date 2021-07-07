@@ -39,7 +39,7 @@ Please follow these steps:
    ```
 
 1. Complete an "ACP"
-   - `git add *`
+   - `git add .`
    - `git commit -m "Created Data Structures Repo"`
    - `git push origin main`
 1. Return to GitHub and refresh the view of your `data-structures-and-algorithms` repository, where you should see what you pushed
